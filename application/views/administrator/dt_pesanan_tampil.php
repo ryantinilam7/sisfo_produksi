@@ -5,7 +5,7 @@
 	</div>
 
 	<?php echo $this->session->flashdata('pesan') ?>
-	
+
 	<table class="table table-striped table-bordered table-hover">
 		<tr>
 			<th>NO</th>
@@ -18,8 +18,8 @@
 		</tr>
 
 		<?php
-		$no=1;
-		foreach ($dt_pesanan as $ps): ?>
+		$no = 1;
+		foreach ($dt_pesanan as $ps) : ?>
 			<tr>
 				<td><?php echo $no++ ?></td>
 				<td><?php echo $ps->tgl_pesan ?></td>

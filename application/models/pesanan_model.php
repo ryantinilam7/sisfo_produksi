@@ -9,7 +9,7 @@ class pesanan_model extends CI_Model
 
 	public function insert_data($data, $table)
 	{
-		$this->db->insert($table,$data);
+		$this->db->insert($table, $data);
 	}
 
 	public function edit_data($where, $table)
@@ -17,10 +17,10 @@ class pesanan_model extends CI_Model
 		return $this->db->get_where($table, $where);
 	}
 
-	public function update_data($where, $data, $table)
+	public function update_data($id, $data)
 	{
-		$this->db->where($where);
-		return $this->db->update($table, $data);
+		$this->db->where('id_pesanan', $id);
+		return $this->db->update('dt_pesanan', $data);
 	}
 
 	public function hapus_data($where, $table)

@@ -6,8 +6,8 @@
 
 	<?php echo $this->session->flashdata('pesan') ?>
 
-	<?php echo anchor('administrator/dt_pesanan/tambah_pesanan','<button class="btn btn-sm btn-primary mb-3"><i class="fa fa-plus fa-sm"></i> Tambah Pesanan</button>') ?>
-	
+	<?php echo anchor('administrator/dt_pesanan/tambah_pesanan', '<button class="btn btn-sm btn-primary mb-3"><i class="fa fa-plus fa-sm"></i> Tambah Pesanan</button>') ?>
+
 	<table class="table table-striped table-bordered table-hover">
 		<tr>
 			<th>NO</th>
@@ -22,8 +22,8 @@
 		</tr>
 
 		<?php
-		$no=1;
-		foreach ($dt_pesanan as $ps): ?>
+		$no = 1;
+		foreach ($dt_pesanan as $ps) : ?>
 			<tr>
 				<td><?php echo $no++ ?></td>
 				<td><?php echo $ps->tgl_pesan ?></td>
