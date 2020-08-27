@@ -7,7 +7,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - SIM Produksi -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
         <div class="sidebar-brand-icon">
           <i class="fas fa-building"></i>
         </div> 
@@ -26,7 +26,7 @@
 
       <!-- Nav Item - Data Pesanan -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo base_url('administrator/dt_pesanan/dt_pesanan_tampil_ppic') ?>">
+        <a class="nav-link collapsed" href="<?php echo base_url('administrator/dt_pesanan/dt_pesanan_tampil') ?>">
           <i class="fas fa-fw fa-cog"></i>
           <span>DATA PESANAN</span>
         </a>

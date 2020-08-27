@@ -10,12 +10,12 @@
 			<div class="form-group">
 				<label>Tanggal Pesanan</label>
 				<input type="hidden" name="id_pesanan" value="<?php echo $ps->id_pesanan ?>">
-				<input type="text" name="tgl_pesan" class="form-control" value="<?php echo $ps->tgl_pesan ?>">
+				<input type="date" name="tgl_pesan" class="form-control" value="<?php echo $ps->tgl_pesan ?>">
 			</div>
 
 			<div class="form-group">
 				<label>Tanggal Kirim</label>
-				<input type="text" name="tgl_kirim" class="form-control" value="<?php echo $ps->tgl_kirim ?>">
+				<input type="date" name="tgl_kirim" class="form-control" value="<?php echo $ps->tgl_kirim ?>">
 			</div>
 
 			<div class="form-group">

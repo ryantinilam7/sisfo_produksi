@@ -7,7 +7,7 @@ class dt_jadwal extends CI_Controller{
 
 		$data['dt_jadwal']	= $this->jadwal_model-> tampil_data('dt_jadwal')->result();
 		$this->load->view('templates_administrator/header');
-		$this->load->view('templates_administrator/sidebar');
+		$this->load->view('templates_administrator/sidebar_mproduksi');
 		$this->load->view('administrator/dt_jadwal',$data);
 		$this->load->view('templates_administrator/footer');
 	}
@@ -16,7 +16,7 @@ class dt_jadwal extends CI_Controller{
 	{
 		$data ['dt_jadwal']	=$this->jadwal_model->tampil_data('dt_jadwal')->result();
 		$this->load->view('templates_administrator/header');
-		$this->load->view('templates_administrator/sidebar');
+		$this->load->view('templates_administrator/sidebar_mproduksi');
 		$this->load->view('administrator/dt_jadwal_form',$data);
 		$this->load->view('templates_administrator/footer');
 	}
@@ -68,7 +68,7 @@ class dt_jadwal extends CI_Controller{
 
 		$data['dt_jadwal']	= $this->jadwal_model-> tampil_data('dt_jadwal')->result();
 		$this->load->view('templates_administrator/header');
-		$this->load->view('templates_administrator/sidebar_mproduksi');
+		$this->load->view('templates_administrator/sidebar_ppic');
 		$this->load->view('administrator/dt_jadwal_tampil',$data);
 		$this->load->view('templates_administrator/footer');
 	}
@@ -97,7 +97,7 @@ class dt_jadwal extends CI_Controller{
 		$where = array('id_jadwal' => $id);
 		$data['dt_jadwal'] = $this->jadwal_model->edit_data($where, 'dt_jadwal')->result();
 		$this->load->view('templates_administrator/header');
-		$this->load->view('templates_administrator/sidebar');
+		$this->load->view('templates_administrator/sidebar_mproduksi');
 		$this->load->view('administrator/dt_jadwal_update', $data);
 		$this->load->view('templates_administrator/footer');
 	}

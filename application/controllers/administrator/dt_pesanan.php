@@ -18,10 +18,10 @@ class dt_pesanan extends CI_Controller
 		$data['dt_pesanan']	= $this->pesanan_model->tampil_data('dt_pesanan')->result();
 		$data['time']		= time();
 		$data['month']		= date('m');
-		$waktu			= time();
-		$ai				= $this->db->get('dt_pesanan')->num_rows();
-		$data['aii'] = str_pad((int)$ai + 1, 4, 0, STR_PAD_LEFT);
-		$data['po']		= $waktu . $ai + 1;
+		$waktu			    = time();
+		$ai				    = $this->db->get('dt_pesanan')->num_rows();
+		$data['aii']        = str_pad((int)$ai + 1, 4, 0, STR_PAD_LEFT);
+		$data['po']		    = $waktu . $ai + 1;
 		$this->load->view('templates_administrator/header');
 		$this->load->view('templates_administrator/sidebar');
 		$this->load->view('administrator/dt_pesanan_form', $data);
@@ -49,7 +49,7 @@ class dt_pesanan extends CI_Controller
 				'nama_perusahaan'	=> $nama_perusahaan,
 				'produk'			=> $produk,
 				'keterangan'		=> $keterangan,
-				'jumlah'		=> $jumlah,
+				'jumlah'		    => $jumlah,
 				'no_po'				=> $no_po,
 			);
 

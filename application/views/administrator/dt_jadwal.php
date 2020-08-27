@@ -28,8 +28,8 @@
 				<td><?php echo $jd->tgl_kirim ?></td>
 				<td><?php echo $jd->id_pesanan ?></td>
 				<td><?php echo $jd->jumlah ?></td>
-				<td width="20px"><?php echo anchor('administrator/dt_pesanan/update/' . $jd->id_pesanan, '<div class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></div>')  ?></td>
-				<td width="20px"><?php echo anchor('administrator/dt_pesanan/delete/' . $jd->id_pesanan, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>')  ?></td>
+				<td width="20px"><?php echo anchor('administrator/dt_jadwal/update/' . $jd->no_spk, '<div class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></div>')  ?></td>
+				<td width="20px"><?php echo anchor('administrator/dt_jadwal/delete/' . $jd->no_spk, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>')  ?></td>
 			</tr>
 		<?php endforeach; ?>
 	</table>

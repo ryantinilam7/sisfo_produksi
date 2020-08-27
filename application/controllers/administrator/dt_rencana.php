@@ -7,7 +7,7 @@ class dt_rencana extends CI_Controller{
 
 		$data['dt_rencana']	= $this->rencana_model-> tampil_data('dt_rencana')->result();
 		$this->load->view('templates_administrator/header');
-		$this->load->view('templates_administrator/sidebar');
+		$this->load->view('templates_administrator/sidebar_mproduksi');
 		$this->load->view('administrator/dt_rencana',$data);
 		$this->load->view('templates_administrator/footer');
 	}
@@ -16,7 +16,7 @@ class dt_rencana extends CI_Controller{
 	{
 		$data ['dt_rencana']	=$this->rencana_model->tampil_data('dt_rencana')->result();
 		$this->load->view('templates_administrator/header');
-		$this->load->view('templates_administrator/sidebar');
+		$this->load->view('templates_administrator/sidebar_mproduksi');
 		$this->load->view('administrator/dt_rencana_form',$data);
 		$this->load->view('templates_administrator/footer');
 	}
@@ -87,7 +87,7 @@ class dt_rencana extends CI_Controller{
 		$where = array('id_pesanan' => $id);
 		$data['dt_rencana'] = $this->rencana_model->edit_data($where, 'dt_rencana')->result();
 		$this->load->view('templates_administrator/header');
-		$this->load->view('templates_administrator/sidebar');
+		$this->load->view('templates_administrator/sidebar_mproduksi');
 		$this->load->view('administrator/dt_rencana_update', $data);
 		$this->load->view('templates_administrator/footer');
 	}

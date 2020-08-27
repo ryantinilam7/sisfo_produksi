@@ -9,7 +9,7 @@ class pesanan_model extends CI_Model
 
 	public function insert_data($data, $table)
 	{
-		$this->db->insert($table, $data);
+		$this->db->insert($table,$data);
 	}
 
 	public function edit_data($where, $table)

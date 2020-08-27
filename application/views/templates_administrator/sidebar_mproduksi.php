@@ -7,7 +7,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - SIM Produksi -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
         <div class="sidebar-brand-icon">
           <i class="fas fa-building"></i>
         </div> 
@@ -27,23 +27,30 @@
       <!-- Nav Item - Data Pesanan -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="<?php echo base_url('administrator/dt_pesanan/dt_pesanan_tampil') ?>">
-          <i class="fas fa-fw fa-cog"></i>
+          <i class="fas fa-fw fa-folder"></i>
           <span>DATA PESANAN</span>
         </a>
       </li>
 
       <!-- Nav Item - Rencana Produksi -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo base_url('administrator/dt_rencana') ?>">
-          <i class="fas fa-fw fa-wrench"></i>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-edit"></i>
           <span>Rencana Produksi </span>
         </a>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header"> Sub Menu :</h6>
+              <a class="collapse-item" href="<?php echo base_url('administrator/dt_rencana') ?>">Perencanaan</a>
+              <a class="collapse-item" href="buttons.html">Hasil Perhitungan</a>
+            </div>
+          </div>
       </li> 
 
       <!-- Nav Item - Penjadwalan -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="<?php echo base_url('administrator/dt_jadwal') ?>">
-          <i class="fas fa-fw fa-folder"></i>
+          <i class="fas fa-calendar-alt"></i>
           <span>Penjadwalan</span>
         </a>
       </li>

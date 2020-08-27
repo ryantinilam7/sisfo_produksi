@@ -1,13 +1,14 @@
 <?php
 
-class dt_hasil extends CI_Controller{
+class dt_hasil extends CI_Controller
+{
 
 	public function index()
 	{
 
 		$data['dt_hasil']	= $this->hasil_model-> tampil_data('dt_hasil')->result();
 		$this->load->view('templates_administrator/header');
-		$this->load->view('templates_administrator/sidebar');
+		$this->load->view('templates_administrator/sidebar_ppic');
 		$this->load->view('administrator/dt_hasil',$data);
 		$this->load->view('templates_administrator/footer');
 	}
@@ -16,7 +17,7 @@ class dt_hasil extends CI_Controller{
 	{
 		$data ['dt_hasil']	=$this->hasil_model->tampil_data('dt_hasil')->result();
 		$this->load->view('templates_administrator/header');
-		$this->load->view('templates_administrator/sidebar');
+		$this->load->view('templates_administrator/sidebar_ppic');
 		$this->load->view('administrator/dt_hasil_form',$data);
 		$this->load->view('templates_administrator/footer');
 	}
@@ -58,17 +59,17 @@ class dt_hasil extends CI_Controller{
 
 		$data['dt_hasil']	= $this->hasil_model-> tampil_data('dt_hasil')->result();
 		$this->load->view('templates_administrator/header');
-		$this->load->view('templates_administrator/sidebar_mproduksi');
+		$this->load->view('templates_administrator/sidebar_ppic');
 		$this->load->view('administrator/dt_hasil_tampil',$data);
 		$this->load->view('templates_administrator/footer');
 	}
 
-	public function dt_hasil_tampil_ppic()
+	public function dt_hasil_tampil_mproduksi()
 	{
 
 		$data['dt_hasil']	= $this->hasil_model-> tampil_data('dt_hasil')->result();
 		$this->load->view('templates_administrator/header');
-		$this->load->view('templates_administrator/sidebar_ppic');
+		$this->load->view('templates_administrator/sidebar_mproduksi');
 		$this->load->view('administrator/dt_hasil_tampil',$data);
 		$this->load->view('templates_administrator/footer');
 	}
@@ -94,7 +95,7 @@ class dt_hasil extends CI_Controller{
 		$where = array('id_hasil' => $id);
 		$data['dt_hasil'] = $this->hasil_model->edit_data($where, 'dt_hasil')->result();
 		$this->load->view('templates_administrator/header');
-		$this->load->view('templates_administrator/sidebar');
+		$this->load->view('templates_administrator/sidebar_ppic');
 		$this->load->view('administrator/dt_hasil_update', $data);
 		$this->load->view('templates_administrator/footer');
 	}
@@ -102,7 +103,7 @@ class dt_hasil extends CI_Controller{
 
 	public function update_aksi()
 	{
-		$id_hasil 		 = $this->input->post('id_hasil');
+		$id 	 		 = $this->input->post('id_hasil');
 		$id_pesanan 	 = $this->input->post('id_pesanan');
 		$no_spk 		 = $this->input->post('no_spk');
 		$tgl_selesai 	 = $this->input->post('tgl_selesai');
@@ -112,12 +113,13 @@ class dt_hasil extends CI_Controller{
 			'id_pesanan' 		=> $id_pesanan,
 			'no_spk'			=> $no_spk,
 			'tgl_selesai'		=> $tgl_selesai,
-			'reject'			=> $reject,
-		
+			'reject'			=> $reject
+		);
+
 		$where = array(
 			'id_hasil' => $id
 		);
-		$this->hasil_model->update_data($where, $data, 'dt_hasil');
+		$this->hasil_model->update_data($id, $data);
 		$this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
 				  Data Hasil Produksi Berhasil Diupdate!
 				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
