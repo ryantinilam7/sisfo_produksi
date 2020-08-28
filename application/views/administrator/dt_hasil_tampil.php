@@ -1,16 +1,17 @@
 <div class="container-fluid">
 
 	<div class="alert alert-success" role="alert">
-		<i class="fas fa-university"></i> Data Hasil Tampil
+		<i class="fas fa-university"></i> Data Hasil Produksi
 	</div>
 
 	<?php echo $this->session->flashdata('pesan') ?>
+
 	
 	<table class="table table-striped table-bordered table-hover">
 		<tr>
 			<th>NO</th>
-			<th>Id Pesanan</th>
-			<th>No SPK</th>
+			<th>Nama Produk</th>
+			<th>Jumlah</th>
 			<th>Tanggal Selesai</th>
 			<th>Reject</th>
 		</tr>

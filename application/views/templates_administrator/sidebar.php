@@ -34,9 +34,9 @@
 
       <!-- Nav Item - Penjadwalan -->
       <li class="nav-item">
-        <a class="nav-link " href="#">
+        <a class="nav-link " href="<?php echo base_url('administrator/dt_pesanan/laporan') ?>">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Penjadwalan</span>
+          <span>Laporan Pesanan</span>
         </a>
       </li>
     </ul>

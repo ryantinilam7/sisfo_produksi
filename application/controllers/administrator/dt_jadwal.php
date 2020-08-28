@@ -2,10 +2,20 @@
 
 class dt_jadwal extends CI_Controller{
 
-	public function index()
+	public function index($id=null)
 	{
-
-		$data['dt_jadwal']	= $this->jadwal_model-> tampil_data('dt_jadwal')->result();
+		if ($id== null) {
+			$data['dt_jadwal']=null;
+		} else {
+			if ($id == "edd") {
+				$data['dt_jadwal']	= $this->rencana_model-> tampil_data_join('dt_rencana','dt_pesanan','due_date ASC')->result();
+			} else if ($id == "spt"){
+				$data['dt_jadwal']	= $this->rencana_model-> tampil_data_join('dt_rencana','dt_pesanan','waktu ASC')->result();
+			}
+			// $data['dt_jadwal']	= $this->jadwal_model-> tampil_data('dt_jadwal')->result();
+		}
+		$data['id'] = $id;
+		// var_dump($data);die;
 		$this->load->view('templates_administrator/header');
 		$this->load->view('templates_administrator/sidebar_mproduksi');
 		$this->load->view('administrator/dt_jadwal',$data);
@@ -65,8 +75,8 @@ class dt_jadwal extends CI_Controller{
 
 	public function dt_jadwal_tampil_ppic()
 	{
-
-		$data['dt_jadwal']	= $this->jadwal_model-> tampil_data('dt_jadwal')->result();
+		// $data['dt_jadwal']	= $this->rencana_model-> tampil_data_join('dt_rencana','dt_pesanan')->result();
+		$data['dt_jadwal']	= $this->jadwal_model-> tampil_data_join('dt_jadwal','dt_pesanan')->result();
 		$this->load->view('templates_administrator/header');
 		$this->load->view('templates_administrator/sidebar_ppic');
 		$this->load->view('administrator/dt_jadwal_tampil',$data);
@@ -145,4 +155,40 @@ class dt_jadwal extends CI_Controller{
 				</div>');
 		redirect('administrator/dt_jadwal');
 	}
+
+	function print($id){
+		$pdf = new FPDF('p','mm','A4');
+		// membuat halaman baru
+		$pdf->AddPage();
+		// setting jenis font yang akan digunakan
+		$pdf->SetFont('Arial','B',16);
+		// mencetak string 
+		$pdf->Cell(190,7,'PT . CCCXXXXX',0,1,'C');
+		$pdf->SetFont('Arial','B',12);
+		$pdf->Cell(190,7,'DAFTAR PENJADWALAN',0,1,'C');
+		// Memberikan space kebawah agar tidak terlalu rapat
+		$pdf->Cell(10,7,'',0,1);
+		$pdf->SetFont('Arial','B',10);
+		$pdf->Cell(20,6,'No SPK',1,0,'C');
+		$pdf->Cell(30,6,'Tanggal SPK',1,0,'C');
+		$pdf->Cell(30,6,'Tanggal Kirim',1,0,'C');
+		$pdf->Cell(85,6,'Nama Produk',1,0,'C');
+		$pdf->Cell(25,6,'Jumlah',1,1,'C');
+		$pdf->SetFont('Arial','',10);
+		if ($id == "edd") {
+			$data	= $this->rencana_model-> tampil_data_join('dt_rencana','dt_pesanan','due_date ASC')->result();
+		} else if ($id == "spt"){
+			$data	= $this->rencana_model-> tampil_data_join('dt_rencana','dt_pesanan','waktu ASC')->result();
+		}
+
+		$no=1;
+		foreach ($data as $row){
+			$pdf->Cell(20,6,$no++,1,0,'C');
+			$pdf->Cell(30,6,date('Y-m-d'),1,0,'C');
+			$pdf->Cell(30,6,$row->tgl_kirim,1,0,'C');
+			$pdf->Cell(85,6,$row->produk,1,0,'C');
+			$pdf->Cell(25,6,$row->jumlah,1,1,'C'); 
+		}
+		$pdf->Output();
+}
 }

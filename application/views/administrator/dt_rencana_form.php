@@ -7,8 +7,15 @@
 	<form method="post" action="<?php echo base_url('administrator/dt_rencana/tambah_rencana_aksi') ?>">
 		<div class="form-group">
 			<label>Nama Pesanan</label>
-			<input type="text" name="tgl_pesan" placeholder="Masukkan Nama Pesanan" class="form-control">
-			<?php echo form_error('tgl_pesan','<div class="text-danger small" ml-3>') ?>
+			<select name="id_pesanan" id="id_pesanan" class="form-control">
+				<?php 
+				$no = 1;
+				foreach ($dt_pesanan_diterima as $ps) : ?>
+				<option value="<?php echo $ps->id_pesanan ?>"><?php echo $ps->id_pesanan.'. '.$ps->produk ?></option>
+				<?php endforeach; ?>
+			</select>
+			<!-- <input type="text" name="tgl_pesan" placeholder="Masukkan Nama Pesanan" class="form-control"> -->
+			<?php echo form_error('id_pesanan','<div class="text-danger small" ml-3>') ?>
 		</div>
 
 		<div class="form-group">
@@ -31,8 +38,8 @@
 
 		<div class="form-group">
 			<label>Keterlambatan</label>
-			<input type="text" name="keterangan" placeholder="Masukkan keterangan" class="form-control">
-			<?php echo form_error('keterangan','<div class="text-danger small" ml-3>') ?>
+			<input type="text" name="keterlambatan" placeholder="Masukkan keterlambatan" class="form-control">
+			<?php echo form_error('keterlambatan','<div class="text-danger small" ml-3>') ?>
 		</div>
 
 		<button type="submit" class="btn btn-primary">Simpan

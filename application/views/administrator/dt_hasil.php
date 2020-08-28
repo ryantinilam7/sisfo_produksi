@@ -11,8 +11,8 @@
 	<table class="table table-striped table-bordered table-hover">
 		<tr>
 			<th>NO</th>
-			<th>Id Pesanan</th>
-			<th>NO SPK</th>
+			<th>Nama Produk</th>
+			<th>Jumlah</th>
 			<th>Tanggal Selesai</th>
 			<th>Reject</th>
 			<th colspan="2">AKSI</th>

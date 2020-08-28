@@ -20,7 +20,12 @@
 			<th>No. PO</th>
 			<th colspan="2">AKSI</th>
 		</tr>
-
+		<?php
+		if ($dt_pesanan==null) {?>
+			<tr>
+				<td colspan="10" class="text-center">Data Kosong / sudah diterima</td>
+			</tr>
+		<?php	} ?>
 		<?php
 		$no = 1;
 		foreach ($dt_pesanan as $ps) : ?>

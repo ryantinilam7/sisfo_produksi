@@ -26,7 +26,7 @@
 
       <!-- Nav Item - Data Pesanan -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo base_url('administrator/dt_pesanan/dt_pesanan_tampil') ?>">
+        <a class="nav-link collapsed" href="<?php echo base_url('administrator/dt_pesanan/dt_pesanan_tampil_ppic') ?>">
           <i class="fas fa-fw fa-cog"></i>
           <span>DATA PESANAN</span>
         </a>

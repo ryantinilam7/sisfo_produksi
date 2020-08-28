@@ -22,7 +22,7 @@
 				<td><?php echo $no++ ?></td>
 				<td><?php echo $jd->tgl_spk ?></td>
 				<td><?php echo $jd->tgl_kirim ?></td>
-				<td><?php echo $jd->id_pesanan ?></td>
+				<td><?php echo $jd->produk ?></td>
 				<td><?php echo $jd->jumlah ?></td>
 			</tr>
 		<?php endforeach; ?>

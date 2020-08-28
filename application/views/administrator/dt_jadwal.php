@@ -6,17 +6,18 @@
 
 	<?php echo $this->session->flashdata('pesan') ?>
 
-	<?php echo anchor('administrator/dt_jadwal/tambah_jadwal','<button class="btn btn-sm btn-primary mb-3"><i class="fa fa-plus fa-sm"></i> Tambah Jadwal</button>') ?>
-	
+	<?php if ($dt_jadwal == null) {
+		echo "Silahkan pilih jadwal berdasarkan SPT atau EDD pada link ini <br> ";  
+		echo anchor('administrator/dt_hasil/dt_hasil_tampil_mproduksi','<button class="btn btn-sm btn-primary mb-3"> Hasil Perencanaan</button>');
+	} else { ?>
+	<a href="<?php echo base_url('administrator/dt_jadwal/print/'.$id)?>" target="_blank" ><button class="btn btn-sm btn-primary mb-3"><i class="fa fa-file fa-sm"></i> cetak pdf</button></a>
 	<table class="table table-striped table-bordered table-hover">
 		<tr>
 			<th>NO SPK</th>
 			<th>Tanggal SPK</th>
 			<th>Tanggal Kirim</th>
-			<th>Nama Perusahaan</th>
 			<th>Nama Produk</th>
 			<th>Jumlah</th>
-			<th colspan="2">AKSI</th>
 		</tr>
 
 		<?php
@@ -24,13 +25,12 @@
 		foreach ($dt_jadwal as $jd): ?>
 			<tr>
 				<td><?php echo $no++ ?></td>
-				<td><?php echo $jd->tgl_spk ?></td>
+				<td><?php echo date('Y-m-d')?></td>
 				<td><?php echo $jd->tgl_kirim ?></td>
-				<td><?php echo $jd->id_pesanan ?></td>
+				<td><?php echo $jd->produk ?></td>
 				<td><?php echo $jd->jumlah ?></td>
-				<td width="20px"><?php echo anchor('administrator/dt_jadwal/update/' . $jd->no_spk, '<div class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></div>')  ?></td>
-				<td width="20px"><?php echo anchor('administrator/dt_jadwal/delete/' . $jd->no_spk, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>')  ?></td>
 			</tr>
 		<?php endforeach; ?>
 	</table>
+		<?php } ?>
 </div>

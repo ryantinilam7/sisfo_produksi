@@ -6,7 +6,7 @@ class dt_pesanan extends CI_Controller
 	public function index()
 	{
 
-		$data['dt_pesanan']	= $this->pesanan_model->tampil_data('dt_pesanan')->result();
+		$data['dt_pesanan']	= $this->pesanan_model->tampil_data_kondisi(array('status_verivikasi' => '0'),'dt_pesanan')->result();
 		$this->load->view('templates_administrator/header');
 		$this->load->view('templates_administrator/sidebar');
 		$this->load->view('administrator/dt_pesanan', $data);
@@ -30,6 +30,7 @@ class dt_pesanan extends CI_Controller
 
 	public function tambah_pesanan_aksi()
 	{
+		// var_dump($_POST);die;
 		$this->_rules();
 
 		if ($this->form_validation->run() == FALSE) {
@@ -74,6 +75,15 @@ class dt_pesanan extends CI_Controller
 		$this->load->view('templates_administrator/footer');
 	}
 
+	public function dt_pesanan_tampil_ppic()
+	{
+
+		$data['dt_pesanan']	= $this->pesanan_model->tampil_data('dt_pesanan')->result();
+		$this->load->view('templates_administrator/header');
+		$this->load->view('templates_administrator/sidebar_ppic');
+		$this->load->view('administrator/dt_pesanan_tampil', $data);
+		$this->load->view('templates_administrator/footer');
+	}
 	public function _rules()
 	{
 		$this->form_validation->set_rules('tgl_pesan', 'tgl_pesan', 'required', [
@@ -141,6 +151,46 @@ class dt_pesanan extends CI_Controller
 		redirect('administrator/dt_pesanan');
 	}
 
+	public function update_status_pesanan($id,$status)
+	{
+		// var_dump($status);die;
+		if ($status == '1') {
+			$status_baru = '0';
+		} else {
+			$status_baru = '1';
+		}
+		
+		$data = array(
+			'status_verivikasi' 		=> $status_baru
+		);
+
+		// print_r($data);
+		// die;
+
+		$where = array(
+			'id_pesanan' => $id
+		);
+		$this->pesanan_model->update_data($id, $data);
+		$this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+				  Data Pesanan Berhasil Diupdate!
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>');
+		redirect('administrator/dt_pesanan/dt_pesanan_tampil');
+	}
+
+	public function laporan()
+	{
+		$data['dt_pesanan_diterima'] = $this->pesanan_model->tampil_data_kondisi(array('status_verivikasi' => '1'), 'dt_pesanan')->result();
+		$data['dt_pesanan_ditolak'] = $this->pesanan_model->tampil_data_kondisi(array('status_verivikasi' => '0'), 'dt_pesanan')->result();
+		// var_dump($data);die;
+		$this->load->view('templates_administrator/header');
+		$this->load->view('templates_administrator/sidebar');
+		$this->load->view('administrator/dt_pesanan_laporan', $data);
+		$this->load->view('templates_administrator/footer');
+	}
+
 	public function delete($id)
 	{
 		$where = array('id_pesanan' => $id);
@@ -153,4 +203,6 @@ class dt_pesanan extends CI_Controller
 				</div>');
 		redirect('administrator/dt_pesanan');
 	}
+
+
 }
